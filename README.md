@@ -18,13 +18,13 @@ Open **http://127.0.0.1:8000**. The engine needs no LLM key. Binding to loopback
 
 ## Private hosted testing
 
-The hosting configuration targets a **separate Vercel project named `jyotish`**, under the existing team. Use a **Preview** deployment with Vercel Authentication enabled for previews. This does not require changes to any other project or a database. Do not deploy an unprotected production URL; the current authorization is private testing only.
+The hosting configuration targets a **separate Vercel project named `jyotish`**, under the existing team. It is connected to this repository: `main` targets **Preview**, and the reserved production branch is `release/production`. The project's build behavior permits preview builds only, with Vercel Authentication enabled for previews. This does not require changes to any other project or a database. The current authorization is private testing only.
 
 Vercel installs the locked Python 3.13 dependencies and runs `tools/build_hosted.py`. The build downloads and verifies the Swiss and independent JPL files, runs the full code suite and 7,000 independent comparisons, and fails if either suite fails. It bundles a fresh synthetic report bound to `VERCEL_GIT_COMMIT_SHA`. The page shows its tested commit and a source link. A missing report or a report from a different commit is not displayed as a pass.
 
 Hosted **Evaluations → Refresh deployment report** reads this build's report; it does not start another run. New checks run on the next build and in [GitHub Actions](https://github.com/ashrivas/jyotish/actions/workflows/accuracy.yml). The local evaluation runner remains available on your own computer. Reference JSON comparison, manual scenarios, uncertainty inspection and exports work in both modes.
 
-Deployment protection must be verified with an unauthenticated request, then chart submission and all six views must be checked through authenticated access. See [the hosting runbook](docs/hosting.md). Configuration being present does not mean the project has been created or deployed.
+Deployment protection must be verified with an unauthenticated request, then chart submission and all six views must be checked through authenticated access. See [the hosting runbook](docs/hosting.md). A created project or a queued build alone does not establish a working deployment.
 
 ## What works
 

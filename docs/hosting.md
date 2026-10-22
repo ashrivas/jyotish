@@ -3,12 +3,13 @@
 ## Target and access
 
 - Team: `neelimashri57` (`team_0bEot0ava1MS6SkR8jWIG3SM`).
-- New project: `jyotish`. Never reuse the `college-agent` project or its configuration.
+- Project: `jyotish` (`prj_v04qdAjGprRLpEsFrh8aTyMzXQxK`). Never reuse the `college-agent` project or its configuration.
+- Dashboard: https://vercel.com/neelimashri57/jyotish.
 - Framework: FastAPI, Python 3.13, entrypoint `app.main:app`.
 - Environment: **Preview**. Enable Vercel Authentication for previews before deployment.
 - Scope: owner-only research testing. No public production service, custom domain, messaging integration, database or model credential is needed.
 
-Create the project without linking Git initially, then deploy the reviewed source commit explicitly as a preview. This avoids an automatic production deployment from `main`. Connecting Git for future automatic releases is a separate configuration step; any future production URL must retain access protection.
+The separate project is connected to `ashrivas/jyotish` through the existing Vercel GitHub installation. The owner approved adding only this repository to the installation's selected-repository list. Its production branch is reserved as `release/production`, so pushes to `main` target Preview. The project's Ignored Build Step is also set to **Only build pre-production**, which skips non-preview builds during this research phase. Standard Vercel Authentication is enabled for previews. A future production release requires an explicit change to these settings and a licensing/access review; it is not part of this setup.
 
 The source repository is https://github.com/ashrivas/jyotish. Supply the real 40-character commit through Git deployment metadata; the build requires `VERCEL_GIT_COMMIT_SHA`. The build command is declared in `pyproject.toml`, with the locked install and function settings in `vercel.json`.
 
@@ -27,7 +28,7 @@ The UI's refresh button reloads existing build evidence. It never claims to laun
 
 ## Verification before handing over a URL
 
-- Confirm project ID and team ID differ from the campus project; inspect preview authentication configuration.
+- Confirm Jyotish's project ID differs from the campus project's ID and belongs to the intended shared team; inspect preview authentication configuration.
 - Confirm the unauthenticated page and API are intercepted by Vercel Authentication.
 - Use authenticated access for the six views and a complete chart submission, including a ±5-minute uncertainty window and unknown-time mode.
 - Compare deployed chart/run hashes and unrounded planetary positions with a local calculation of the same frozen synthetic request.
