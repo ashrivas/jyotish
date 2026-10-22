@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "fastapi",
+  "installCommand": "uv sync --dev --locked",
+  "functions": {
+    "app/main.py": {
+      "maxDuration": 300,
+      "includeFiles": "{web/**,data/ephe/*.se1,data/hosted/report.json,refdata/TRIAGE.json,tests/fixtures/input_matrix.json,app/knowledge/*.yaml}",
+      "excludeFiles": "{.runtime/**,.venv/**,refdata/books/**,refdata/kernels/**,refdata/private/**,refdata/imports/**,var/**,docs/images/**,.env*}"
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" },
+        { "key": "Cache-Control", "value": "no-store" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "no-referrer" }
+      ]
+    }
+  ]
+}

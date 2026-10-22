@@ -1,6 +1,6 @@
 # Jyoti Accuracy Lab
 
-A local web workbench for testing the computational core of Jyoti. Python 3.13, FastAPI, Pydantic, Swiss Ephemeris and a buildless browser UI. **This is an incomplete research build, not a certified astrologer or a completed M1.** No public deployment or messaging integration is configured.
+A web workbench for testing the computational core of Jyoti locally or in a protected Vercel preview. Python 3.13, FastAPI, Pydantic, Swiss Ephemeris and a buildless browser UI. **This is an incomplete research build, not a certified astrologer or a completed M1.** No public service or messaging integration is configured.
 
 ## Run locally
 
@@ -15,6 +15,16 @@ uv run uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
 Open **http://127.0.0.1:8000**. The engine needs no LLM key. Binding to loopback keeps this development server on your computer. Do not expose this research server to the internet.
+
+## Private hosted testing
+
+The hosting configuration targets a **separate Vercel project named `jyotish`**, under the existing team. Use a **Preview** deployment with Vercel Authentication enabled for previews. This does not require changes to any other project or a database. Do not deploy an unprotected production URL; the current authorization is private testing only.
+
+Vercel installs the locked Python 3.13 dependencies and runs `tools/build_hosted.py`. The build downloads and verifies the Swiss and independent JPL files, runs the full code suite and 7,000 independent comparisons, and fails if either suite fails. It bundles a fresh synthetic report bound to `VERCEL_GIT_COMMIT_SHA`. The page shows its tested commit and a source link. A missing report or a report from a different commit is not displayed as a pass.
+
+Hosted **Evaluations → Refresh deployment report** reads this build's report; it does not start another run. New checks run on the next build and in [GitHub Actions](https://github.com/ashrivas/jyotish/actions/workflows/accuracy.yml). The local evaluation runner remains available on your own computer. Reference JSON comparison, manual scenarios, uncertainty inspection and exports work in both modes.
+
+Deployment protection must be verified with an unauthenticated request, then chart submission and all six views must be checked through authenticated access. See [the hosting runbook](docs/hosting.md). Configuration being present does not mean the project has been created or deployed.
 
 ## What works
 
@@ -71,4 +81,4 @@ See [spec traceability](docs/spec-traceability.md) and [architecture decisions](
 
 Swiss `.se1` files and JPL kernels download from official maintainer/NASA sources and are checksum-verified. A missing or substituted ephemeris fails closed. Raw references, textbooks, imports, personal cases, runtimes and generated local reports are excluded from Git and the production image. `--book` downloads the author-hosted textbook into ignored local reference storage for study.
 
-This phase is local development/testing as authorized. Before any service distribution or hosting, resolve the Swiss Ephemeris and Python binding licensing requirements and the rights for the selected textual editions. There are no payment, WhatsApp or deployment steps in this repo.
+This phase is development and access-controlled testing by the project owner. Before opening access to other users or distributing a service, resolve the Swiss Ephemeris and Python binding licensing requirements and the rights for the selected textual editions. There are no payment or WhatsApp steps in this repo.

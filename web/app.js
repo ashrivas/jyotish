@@ -1,6 +1,6 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
-const state = { output: null, fixtures: [], sources: null };
+const state = { output: null, fixtures: [], sources: null, evaluation: null };
 const SIGNS = [
   "Aries",
   "Taurus",
@@ -719,6 +719,35 @@ function renderSources(data) {
 }
 function renderEvals(report, suites) {
   const p = clear("eval-results");
+  if (state.evaluation?.mode === "build_report") {
+    text(p, state.evaluation.note, "notice");
+    if (report?.build) {
+      text(
+        p,
+        "Deployment " +
+          report.build.commit.slice(0, 12) +
+          " · checks completed " +
+          report.generated_at,
+        "micro",
+      );
+      const source = el("a", "micro", "Source for this tested version");
+      source.href = report.build.source_url;
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
+      p.append(source);
+    } else {
+      text(
+        p,
+        "A matching build report is unavailable. No passing result is assumed.",
+        "error",
+      );
+    }
+    const checks = el("a", "micro", "View GitHub accuracy runs");
+    checks.href = state.evaluation.checks_url;
+    checks.target = "_blank";
+    checks.rel = "noopener noreferrer";
+    p.append(checks);
+  }
   if (report?.local_checks) {
     const c = el("div", "mini-grid");
     [
@@ -782,6 +811,18 @@ async function waitForEval(jobId) {
 $("run-evals").addEventListener("click", async () => {
   const button = $("run-evals");
   button.disabled = true;
+  if (state.evaluation?.mode === "build_report") {
+    try {
+      renderEvals(await api("/api/evals"));
+      $("live-status").textContent =
+        "Deployment report refreshed. No new evaluation was launched.";
+    } catch (e) {
+      text(clear("eval-results"), e.message, "error");
+    } finally {
+      button.disabled = false;
+    }
+    return;
+  }
   button.textContent = "Running checks…";
   $("live-status").textContent =
     "Running the code tests and 7,000 independent longitude comparisons. Reference gaps will stay blocked.";
@@ -847,11 +888,19 @@ async function init() {
     });
   }
   if (results[1].status === "fulfilled") renderSources(results[1].value);
-  if (results[2].status === "fulfilled")
+  if (results[2].status === "fulfilled") {
+    state.evaluation = results[2].value.evaluation_execution;
+    if (state.evaluation?.mode === "build_report") {
+      $("run-evals").textContent = "Refresh deployment report";
+      $("research-mode").textContent = "Private testing build";
+    }
     renderEvals(
       results[3].status === "fulfilled" ? results[3].value : null,
       results[2].value.spec_suites,
     );
+  } else {
+    $("run-evals").disabled = true;
+  }
   results
     .filter((r) => r.status === "rejected")
     .forEach((r) => console.error(r.reason));

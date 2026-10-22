@@ -1,6 +1,6 @@
 # Accuracy architecture
 
-The v2.1 revision supersedes the older raw-text RAG plan. This build takes the user's narrowed scope: a local core-model workbench, without messaging, payments or public hosting.
+The v2.1 revision supersedes the older raw-text RAG plan. This build takes the user's narrowed scope: a core-model workbench for local and protected hosted testing, without messaging, payments or a public service.
 
 ```mermaid
 flowchart TD
@@ -38,3 +38,5 @@ flowchart TD
 ## Runtime and privacy
 
 FastAPI serves static HTML/CSS/JS and typed JSON endpoints. The chart API is stateless. No database, analytics or external model call sees birth inputs. Reference import compares in memory. Synthetic evaluation reports use a local `var/evals` directory, overridable by `JYOTI_EVAL_DIR`; read-only preview environments can retain results in memory. The npm wrapper supports the managed internal QA supervisor; normal local use needs only Python and uv.
+
+On Vercel, numerical checks run during the build and an immutable, commit-bound report is bundled. Hosted runtime does not launch local background jobs or depend on process affinity. The local runner is unchanged. HTTPS origin checks account for the platform proxy without accepting arbitrary forwarded host headers. Private testing uses a separate project and an authenticated Preview URL; see [the hosting runbook](hosting.md).

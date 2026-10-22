@@ -10,6 +10,7 @@ from app.models import ChartRequest
 from app.astro.engine import compute
 from app.astro.ephemeris import ROOT
 from app.knowledge.engine import catalog
+from app.runtime import is_hosted, evaluation_execution, SOURCE_URL
 from app.interpret.plans import technical_summary
 from app.evaluation import (
     ReferenceCase,
@@ -32,7 +33,8 @@ async def local_safety(request: Request, call_next):
     if request.method == "POST":
         origin = request.headers.get("origin")
         # Browser writes are same-origin only; no wildcard CORS or third-party write access.
-        if origin and origin != f"{request.url.scheme}://{request.headers.get('host')}":
+        scheme = "https" if is_hosted() else request.url.scheme
+        if origin and origin != f"{scheme}://{request.headers.get('host')}":
             return JSONResponse({"error": "Cross-origin writes are disabled."}, status_code=403)
         try:
             if int(request.headers.get("content-length", 0)) > 2_000_000:
@@ -52,7 +54,7 @@ async def local_safety(request: Request, call_next):
 @app.get("/api/status")
 def status():
     return {
-        "mode": "local_research",
+        "mode": "private_hosted_research" if is_hosted() else "local_research",
         "release_ready": False,
         "version": "0.1.0",
         "model": {
@@ -64,6 +66,8 @@ def status():
             "note": "This assistant's model session is not a reusable product API credential.",
         },
         "privacy": "Chart inputs are processed in memory and not saved by the application. Browser exports are explicit.",
+        "source_url": SOURCE_URL,
+        "evaluation_execution": evaluation_execution(),
         "spec_suites": suite_status(),
     }
 
@@ -97,6 +101,12 @@ def evals():
 
 @app.post("/api/evals/run")
 def run_evals():
+    if is_hosted():
+        raise HTTPException(
+            409,
+            "Evaluations run during the hosted build and in GitHub Actions. "
+            "Read /api/evals for this deployment's report; no background job was started.",
+        )
     try:
         return JSONResponse(start_eval_job(), status_code=202)
     except RuntimeError as exc:
@@ -107,6 +117,8 @@ def run_evals():
 
 @app.get("/api/evals/jobs/{job_id}")
 def get_eval_job(job_id: str):
+    if is_hosted():
+        raise HTTPException(404, "This deployment does not run in-process evaluation jobs.")
     result = eval_job(job_id)
     if result is None:
         raise HTTPException(404, "Evaluation job not found; local jobs do not survive a server restart.")

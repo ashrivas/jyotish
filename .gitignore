@@ -14,3 +14,5 @@ var/
 *.log
 .openai/
 node_modules/
+.vercel/
+data/hosted/

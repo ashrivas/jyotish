@@ -1,0 +1,17 @@
+.git
+.venv
+.runtime
+node_modules
+**/__pycache__
+.pytest_cache
+.hypothesis
+.env*
+.openai
+var
+data/ephe/*.se1
+data/hosted
+refdata/books
+refdata/kernels
+refdata/private
+refdata/imports
+docs/images

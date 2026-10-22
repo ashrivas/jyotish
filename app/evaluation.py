@@ -15,6 +15,7 @@ from app.models import StrictModel, ChartRequest, Conventions
 from app.astro.engine import compute
 from app.astro.angles import separation
 from app.astro.ephemeris import ROOT
+from app.runtime import is_hosted
 
 EVAL_LOCK = Lock()
 RESULTS = Path(os.environ.get("JYOTI_EVAL_DIR", str(ROOT / "var/evals")))
@@ -114,6 +115,15 @@ def compare_reference(case: ReferenceCase) -> dict:
 
 
 def latest_report() -> dict:
+    if is_hosted():
+        path = ROOT / "data/hosted/report.json"
+        if not path.is_file():
+            return {"status": "missing_build_report", "release_ready": False}
+        report = json.loads(path.read_text())
+        commit = os.environ.get("VERCEL_GIT_COMMIT_SHA")
+        if not commit or report.get("build", {}).get("commit") != commit:
+            return {"status": "build_report_commit_mismatch", "release_ready": False}
+        return report
     path = RESULTS / "latest.json"
     return _LAST_REPORT or (
         json.loads(path.read_text()) if path.exists() else {"status": "not_run", "release_ready": False}
