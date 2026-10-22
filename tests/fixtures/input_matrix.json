@@ -1,0 +1,487 @@
+{
+  "description": "30 synthetic/reference-input scenarios. These are NOT golden outputs or consented human records.",
+  "cases": [
+    {
+      "id": "lucknow-nominal",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1988-08-14",
+          "time": "19:05",
+          "latitude": 26.8467,
+          "longitude": 80.9462,
+          "timezone": "Asia/Kolkata",
+          "place": "Lucknow Nominal",
+          "confidence": "certificate"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "india-independence",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1947-08-15",
+          "time": "00:00",
+          "latitude": 28.6139,
+          "longitude": 77.209,
+          "timezone": "Asia/Kolkata",
+          "place": "India Independence",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "india-war-time",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1943-08-15",
+          "time": "12:00",
+          "latitude": 22.5726,
+          "longitude": 88.3639,
+          "timezone": "Asia/Kolkata",
+          "place": "India War Time",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "calcutta-historical",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1900-01-01",
+          "time": "12:00",
+          "latitude": 22.5726,
+          "longitude": 88.3639,
+          "timezone": "Asia/Kolkata",
+          "place": "Calcutta Historical",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "mumbai-recorded-offset",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1900-01-01",
+          "time": "12:00",
+          "latitude": 19.076,
+          "longitude": 72.8777,
+          "timezone": "Asia/Kolkata",
+          "place": "Mumbai Recorded Offset",
+          "confidence": "exact",
+          "civil_offset_seconds": 17460,
+          "civil_offset_source": "Synthetic reference case for recorded Bombay offset; not a real person"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "new-jersey-summer-1975",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1975-07-04",
+          "time": "12:00",
+          "latitude": 40.7357,
+          "longitude": -74.1724,
+          "timezone": "America/New_York",
+          "place": "New Jersey Summer 1975",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "new-jersey-winter-1975",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1975-01-04",
+          "time": "12:00",
+          "latitude": 40.7357,
+          "longitude": -74.1724,
+          "timezone": "America/New_York",
+          "place": "New Jersey Winter 1975",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "saratoga-midnight",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2000-01-01",
+          "time": "00:01",
+          "latitude": 37.2638,
+          "longitude": -122.023,
+          "timezone": "America/Los_Angeles",
+          "place": "Saratoga Midnight",
+          "confidence": "family"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "london-summer",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1990-07-15",
+          "time": "12:00",
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "timezone": "Europe/London",
+          "place": "London Summer",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "london-winter",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1990-01-15",
+          "time": "12:00",
+          "latitude": 51.5074,
+          "longitude": -0.1278,
+          "timezone": "Europe/London",
+          "place": "London Winter",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "dubai",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1999-09-09",
+          "time": "09:09",
+          "latitude": 25.2048,
+          "longitude": 55.2708,
+          "timezone": "Asia/Dubai",
+          "place": "Dubai",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "singapore",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1980-01-01",
+          "time": "12:00",
+          "latitude": 1.3521,
+          "longitude": 103.8198,
+          "timezone": "Asia/Singapore",
+          "place": "Singapore",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "sydney-summer",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2000-01-01",
+          "time": "12:00",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "timezone": "Australia/Sydney",
+          "place": "Sydney Summer",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "sydney-winter",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2000-07-01",
+          "time": "12:00",
+          "latitude": -33.8688,
+          "longitude": 151.2093,
+          "timezone": "Australia/Sydney",
+          "place": "Sydney Winter",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "adelaide-half-hour",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2025-02-01",
+          "time": "06:00",
+          "latitude": -34.9285,
+          "longitude": 138.6007,
+          "timezone": "Australia/Adelaide",
+          "place": "Adelaide Half Hour",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "kathmandu-quarter-hour",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2005-01-01",
+          "time": "00:01",
+          "latitude": 27.7172,
+          "longitude": 85.324,
+          "timezone": "Asia/Kathmandu",
+          "place": "Kathmandu Quarter Hour",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "chatham-quarter-hour",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2024-01-01",
+          "time": "12:00",
+          "latitude": -43.95,
+          "longitude": -176.55,
+          "timezone": "Pacific/Chatham",
+          "place": "Chatham Quarter Hour",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "auckland-date-line",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2020-12-31",
+          "time": "23:59",
+          "latitude": -36.8485,
+          "longitude": 174.7633,
+          "timezone": "Pacific/Auckland",
+          "place": "Auckland Date Line",
+          "confidence": "family"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "honolulu",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2020-12-31",
+          "time": "23:59",
+          "latitude": 21.3099,
+          "longitude": -157.8581,
+          "timezone": "Pacific/Honolulu",
+          "place": "Honolulu",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "tokyo",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1960-06-01",
+          "time": "12:00",
+          "latitude": 35.6762,
+          "longitude": 139.6503,
+          "timezone": "Asia/Tokyo",
+          "place": "Tokyo",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "berlin",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1989-11-09",
+          "time": "18:57",
+          "latitude": 52.52,
+          "longitude": 13.405,
+          "timezone": "Europe/Berlin",
+          "place": "Berlin",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "paris-historical",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1901-06-01",
+          "time": "12:00",
+          "latitude": 48.8566,
+          "longitude": 2.3522,
+          "timezone": "Europe/Paris",
+          "place": "Paris Historical",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "sao-paulo",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1995-12-01",
+          "time": "12:00",
+          "latitude": -23.5505,
+          "longitude": -46.6333,
+          "timezone": "America/Sao_Paulo",
+          "place": "Sao Paulo",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "cape-town",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1995-12-01",
+          "time": "12:00",
+          "latitude": -33.9249,
+          "longitude": 18.4241,
+          "timezone": "Africa/Johannesburg",
+          "place": "Cape Town",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "equator",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2000-03-20",
+          "time": "12:00",
+          "latitude": 0,
+          "longitude": 0,
+          "timezone": "Etc/UTC",
+          "place": "Equator",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "leap-day",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2000-02-29",
+          "time": "23:59:59",
+          "latitude": 12.9716,
+          "longitude": 77.5946,
+          "timezone": "Asia/Kolkata",
+          "place": "Leap Day",
+          "confidence": "certificate"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "century-non-leap",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1900-03-01",
+          "time": "00:00",
+          "latitude": 28.6139,
+          "longitude": 77.209,
+          "timezone": "Asia/Kolkata",
+          "place": "Century Non Leap",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "moon-chart-unknown",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "1990-05-01",
+          "time": null,
+          "latitude": 13.0827,
+          "longitude": 80.2707,
+          "timezone": "Asia/Kolkata",
+          "place": "Moon Chart Unknown",
+          "confidence": "unknown"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "arctic-no-sunrise",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2024-12-21",
+          "time": "12:00",
+          "latitude": 69.6492,
+          "longitude": 18.9553,
+          "timezone": "Europe/Oslo",
+          "place": "Arctic No Sunrise",
+          "confidence": "family"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    },
+    {
+      "id": "date-range-upper",
+      "reference_status": "expected_values_pending",
+      "input": {
+        "birth": {
+          "date": "2099-12-31",
+          "time": "23:59",
+          "latitude": 1.3521,
+          "longitude": 103.8198,
+          "timezone": "Asia/Singapore",
+          "place": "Date Range Upper",
+          "confidence": "exact"
+        },
+        "as_of": "2026-10-22T00:00:00Z"
+      }
+    }
+  ]
+}

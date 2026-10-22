@@ -1,0 +1,27 @@
+version: rules.v0-technical-drafts
+rules:
+  - id: technical.pvr.budha-aditya
+    source_id: pvr-2000
+    locator: "11.2.4, printed pp113-114"
+    review_status: draft
+    category: technical_configuration
+    name: Budha-Aditya configuration
+    when:
+      op: eq
+      left: sun.sign_index
+      right: mercury.sign_index
+    requires: [sun.sign_index, mercury.sign_index]
+    caveat: "This detects only the same-sign configuration. Combustion and strength conditions are not adjudicated; it is not a prediction of intelligence, skill or success."
+  - id: technical.pvr.guru-mangala
+    source_id: pvr-2000
+    locator: "11.6, printed p125"
+    review_status: draft
+    category: technical_configuration
+    name: Guru-Mangala configuration
+    when:
+      op: sign_distance_in
+      left: jupiter.sign_index
+      right: mars.sign_index
+      values: [0, 6]
+    requires: [jupiter.sign_index, mars.sign_index]
+    caveat: "Technical configuration only; no interpretive effect has been approved."

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Jyoti: a local workbench for inspecting Jyotish calculations, uncertainty, sources and validation."
+    />
+    <title>Jyoti · Accuracy Lab</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="Jyoti home"
+        ><span class="mark">✳</span> Jyoti
+        <span class="lab-label">ACCURACY LAB</span></a
+      ><span class="research"><i></i> Local research build</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <div class="eyebrow">EXACT CALCULATIONS. VISIBLE EVIDENCE.</div>
+          <h1>A chart you can inspect.</h1>
+          <p>
+            Trace the sky, challenge the conventions, and see where the evidence
+            ends.
+          </p>
+        </div>
+        <div class="version">
+          <b>01</b><span>COMPUTATION<br />WORKBENCH</span>
+        </div>
+      </section>
+      <div class="workspace">
+        <aside class="input-card">
+          <div class="card-heading">
+            <span class="number">01</span>
+            <h2>Birth details</h2>
+          </div>
+          <label for="fixture">Test scenario</label
+          ><select id="fixture">
+            <option value="">Enter your own details</option>
+          </select>
+          <form id="birth-form">
+            <div class="form-row">
+              <div>
+                <label for="birth-date">Local date</label
+                ><input
+                  id="birth-date"
+                  type="date"
+                  value="1988-08-14"
+                  min="1900-01-01"
+                  max="2099-12-31"
+                  required
+                />
+              </div>
+              <div>
+                <label for="birth-time">Local time</label
+                ><input id="birth-time" type="time" step="1" value="19:05:00" />
+              </div>
+            </div>
+            <label for="place">Birthplace</label
+            ><select id="place">
+              <option value="lucknow">Lucknow, India</option>
+              <option value="delhi">New Delhi, India</option>
+              <option value="mumbai">Mumbai, India</option>
+              <option value="kolkata">Kolkata, India</option>
+              <option value="bengaluru">Bengaluru, India</option>
+              <option value="saratoga">Saratoga, California</option>
+              <option value="london">London, UK</option>
+              <option value="dubai">Dubai, UAE</option>
+              <option value="singapore">Singapore</option>
+              <option value="sydney">Sydney, Australia</option>
+              <option value="manual">Manual coordinates</option>
+            </select>
+            <details id="coordinates">
+              <summary>Coordinates &amp; civil time</summary>
+              <div class="form-row">
+                <div>
+                  <label for="latitude">Latitude</label
+                  ><input
+                    id="latitude"
+                    type="number"
+                    step="any"
+                    min="-89"
+                    max="89"
+                    value="26.8467"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="longitude">Longitude</label
+                  ><input
+                    id="longitude"
+                    type="number"
+                    step="any"
+                    min="-180"
+                    max="180"
+                    value="80.9462"
+                    required
+                  />
+                </div>
+              </div>
+              <label for="timezone">IANA timezone</label
+              ><input id="timezone" value="Asia/Kolkata" required /><label
+                for="fold"
+                >Repeated time during DST change</label
+              ><select id="fold">
+                <option value="">Ask if ambiguous</option>
+                <option value="0">First occurrence (fold 0)</option>
+                <option value="1">Second occurrence (fold 1)</option></select
+              ><label for="offset">Historical recorded offset, seconds</label
+              ><input
+                id="offset"
+                type="number"
+                min="-64800"
+                max="64800"
+                placeholder="Optional; e.g. 17460 for +04:51"
+              /><label for="offset-source">Offset record source</label
+              ><input
+                id="offset-source"
+                maxlength="300"
+                placeholder="Required only for a recorded offset"
+              />
+            </details>
+            <label for="confidence">How certain is the birth time?</label
+            ><select id="confidence">
+              <option value="certificate">Birth record · ±5 minutes</option>
+              <option value="family">Family memory · ±30 minutes</option>
+              <option value="exact">Treat as an exact supplied instant</option>
+              <option value="custom">Custom time window</option>
+              <option value="unknown">Unknown · entire local day</option>
+            </select>
+            <div id="custom-window" hidden>
+              <label for="uncertainty">Uncertainty, ± minutes</label
+              ><input
+                id="uncertainty"
+                type="number"
+                value="15"
+                min="0"
+                max="720"
+                step="0.1"
+              />
+            </div>
+            <details>
+              <summary>Calculation conventions</summary>
+              <p class="micro">
+                Sidereal Lahiri · whole-sign houses · PVR chapter 6 varga
+                mappings. Every setting is included in the result hash.
+              </p>
+              <label for="nodes">Lunar nodes</label
+              ><select id="nodes">
+                <option value="mean">Mean nodes</option>
+                <option value="true">True nodes</option></select
+              ><label for="year-days">Vimshottari year</label
+              ><select id="year-days">
+                <option value="365.25">365.25 days</option>
+                <option value="365.2425">365.2425 days</option>
+                <option value="360">360 days</option></select
+              ><label for="as-of">Calculate current periods at (UTC)</label
+              ><input
+                id="as-of"
+                type="datetime-local"
+                step="1"
+                value="2026-10-22T00:00:00"
+              />
+            </details>
+            <button class="primary" type="submit" id="compute">
+              Compute &amp; inspect <span>↗</span>
+            </button>
+            <div id="form-error" class="error" role="alert" hidden></div>
+          </form>
+          <p class="privacy">
+            Birth details stay in memory. This app does not save them. Exporting
+            a result is your choice.
+          </p>
+        </aside>
+        <section class="results-area">
+          <div class="tabs" role="tablist" aria-label="Workbench views">
+            <button
+              role="tab"
+              aria-selected="true"
+              data-tab="chart"
+              id="tab-chart"
+            >
+              Chart</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-tab="uncertainty"
+              id="tab-uncertainty"
+            >
+              Time uncertainty</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-tab="evidence"
+              id="tab-evidence"
+            >
+              Evidence</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-tab="evals"
+              id="tab-evals"
+            >
+              Evaluations</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-tab="sources"
+              id="tab-sources"
+            >
+              Sources</button
+            ><button
+              role="tab"
+              aria-selected="false"
+              data-tab="raw"
+              id="tab-raw"
+            >
+              JSON
+            </button>
+          </div>
+          <div id="live-status" class="live-status" aria-live="polite">
+            Ready to compute. Start with a scenario or enter birth details.
+          </div>
+          <section
+            id="panel-chart"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-chart"
+          >
+            <div class="empty-state">
+              <span class="orbit">☉</span>
+              <h2>Begin with the sky.</h2>
+              <p>
+                Your chart, period tree and supporting calculations will appear
+                here. Each result keeps its conventions and validation status
+                visible.
+              </p>
+              <div class="empty-tags">
+                <span>16 vargas</span><span>Historical timezones</span
+                ><span>Boundary-aware uncertainty</span>
+              </div>
+            </div>
+          </section>
+          <section
+            id="panel-uncertainty"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-uncertainty"
+            hidden
+          >
+            <div class="empty-state">
+              <h2>What changes when the time changes?</h2>
+              <p>
+                Compute a chart to inspect which facts hold across the supplied
+                birth-time window.
+              </p>
+            </div>
+          </section>
+          <section
+            id="panel-evidence"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-evidence"
+            hidden
+          ></section>
+          <section
+            id="panel-evals"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-evals"
+            hidden
+          >
+            <div class="section-top">
+              <div>
+                <div class="eyebrow">MEASURE BEFORE TRUSTING</div>
+                <h2>Validation ledger</h2>
+              </div>
+              <button id="run-evals" class="secondary">
+                Run local evaluations
+              </button>
+            </div>
+            <div class="notice">
+              Release is blocked until the required external references and
+              expert checks are complete. A passing code test does not certify a
+              prediction.
+            </div>
+            <div id="eval-results"></div>
+            <div class="section-top">
+              <h3>Compare a reference chart</h3>
+              <label class="secondary file-button" for="reference-file"
+                >Load reference JSON<input
+                  id="reference-file"
+                  type="file"
+                  accept="application/json"
+                  hidden
+              /></label>
+            </div>
+            <p class="micro">
+              The imported case must include its program version, settings,
+              source locator and source-file SHA256. Comparison tolerances
+              cannot be loosened in the file. Inputs are not retained.
+            </p>
+            <div id="reference-results"></div>
+          </section>
+          <section
+            id="panel-sources"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-sources"
+            hidden
+          >
+            <div class="section-top">
+              <div>
+                <div class="eyebrow">TRADITION WITH PROVENANCE</div>
+                <h2>The source shelf</h2>
+              </div>
+            </div>
+            <div class="notice">
+              Cataloged does not mean ingested, proofread, licensed for reuse,
+              or expert approved. Editions and disagreements remain visible.
+            </div>
+            <div id="source-list"></div>
+            <h3>Open source conflicts</h3>
+            <div id="triage-list"></div>
+          </section>
+          <section
+            id="panel-raw"
+            class="panel"
+            role="tabpanel"
+            aria-labelledby="tab-raw"
+            hidden
+          >
+            <div class="section-top">
+              <h2>Reproducible output</h2>
+              <button id="download" class="secondary" disabled>
+                Export JSON ↓
+              </button>
+            </div>
+            <p class="micro">
+              The export contains birth details. Save it somewhere appropriate.
+            </p>
+            <pre id="raw-output">Compute a chart to inspect its JSON.</pre>
+          </section>
+        </section>
+      </div>
+      <footer>
+        <span>Jyoti · Research workbench v0.1</span
+        ><span
+          >Astronomical precision and traditional interpretation are evaluated
+          separately.</span
+        >
+      </footer>
+    </main>
+  </body>
+</html>

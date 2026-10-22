@@ -1,0 +1,66 @@
+version: sources.v1-research
+policy: "A catalog entry is not an ingested or expert-approved corpus. No predictive accuracy is inferred from reputation. Editions and reuse rights must be recorded before promotion."
+sources:
+  - id: bphs
+    title: Brihat Parashara Hora Shastra
+    author: Traditionally attributed to Parashara
+    role: core_classical
+    scope: Parashari definitions, vargas, dashas, strengths, rule foundations
+    edition: null
+    status: edition_and_review_pending
+    url: https://sanskritdocuments.org/iast/jyotisha.php
+    notes: "Divergent recensions; preserve the edition and variants on each verse. Do not merge chapter numbering across editions."
+  - id: brihat-jataka
+    title: Brihat Jataka
+    author: Varahamihira
+    role: core_classical
+    scope: Classical natal synthesis and cross-checks
+    edition: null
+    status: edition_and_review_pending
+    url: https://www.wisdomlib.org/hinduism/book/brihat-jataka-by-varahamihira-sanskrit-english
+    notes: "Bhattotpala's commentary should be cataloged separately with its own edition."
+  - id: saravali
+    title: Saravali
+    author: Kalyana Varma
+    role: core_classical
+    scope: Combinations, placements, exceptions and synthesis
+    edition: null
+    status: edition_and_review_pending
+    url: https://acvaonline.org/acva-recommended-reading/
+    notes: "Translation rights and an authoritative Sanskrit edition remain to be selected."
+  - id: phaladeepika
+    title: Phaladeepika
+    author: Mantreswara
+    role: core_classical
+    scope: Natal, yoga and dasha interpretations
+    edition: null
+    status: edition_and_review_pending
+    url: https://sanskritdocuments.org/iast/jyotisha.php
+    notes: "The online Sanskrit transcription is a discovery lead, not a proofread production edition."
+  - id: jataka-parijata
+    title: Jataka Parijata
+    author: Vaidyanatha Dikshita
+    role: candidate_cross_reference
+    scope: Cross-checks and treatment of classical disagreements
+    edition: null
+    status: edition_and_review_pending
+    url: https://acvaonline.org/acva-recommended-reading/
+    notes: "Proposed addition; not silently promoted above the four core texts."
+  - id: raman-balas
+    title: Graha and Bhava Balas
+    author: B. V. Raman
+    role: computation_reference
+    scope: Worked Shadbala and bhava-bala examples
+    edition: null
+    status: reference_examples_pending
+    url: https://acvaonline.org/acva-recommended-reading/
+    notes: "Use the example's own ayanamsa and stated rounding. Do not tune formulas to JHora if its convention differs."
+  - id: pvr-2000
+    title: "Vedic Astrology: An Integrated Approach"
+    author: P. V. R. Narasimha Rao
+    role: computation_reference
+    scope: Chapters 3, 6, 11 and 12; formula and worked-example checks
+    edition: "Author-hosted 2000 textbook PDF; SHA256 1cafa828f34764ed5e85816882df2e8f0bc014c5c57ccdb27169416e117fd4db"
+    status: consulted_not_scholar_approved
+    url: https://www.vedicastrologer.org/articles/vedic_astro_textbook.pdf
+    notes: "Available from the author's site. Downloaded only into ignored test reference storage; not redistributed as corpus. Table 6 and the Mars prose disagree (Aries versus Leo); triage recorded."

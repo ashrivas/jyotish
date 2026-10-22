@@ -1,0 +1,192 @@
+{
+  "generated_at": "2026-10-22T07:51:16.291006+00:00",
+  "status": "local_checks_passed",
+  "local_checks": {
+    "exit_code": 0,
+    "passed": 133
+  },
+  "dual_engine": {
+    "status": "passed",
+    "epochs": 1000,
+    "comparisons": 7000,
+    "seed": 20261022,
+    "tolerance_arcseconds": 1.0,
+    "worst_by_planet": {
+      "sun": {
+        "arcseconds": 0.00273371924777166,
+        "utc": "1915-05-31T14:36:19.208460+00:00"
+      },
+      "moon": {
+        "arcseconds": 0.007441116292739025,
+        "utc": "2084-01-05T08:44:58.009922+00:00"
+      },
+      "mars": {
+        "arcseconds": 0.02758949830194979,
+        "utc": "1912-11-05T10:50:55.030605+00:00"
+      },
+      "mercury": {
+        "arcseconds": 0.0025816441848292015,
+        "utc": "1908-08-02T12:26:51.818509+00:00"
+      },
+      "jupiter": {
+        "arcseconds": 0.0025620003270887537,
+        "utc": "1915-05-31T14:36:19.208460+00:00"
+      },
+      "venus": {
+        "arcseconds": 0.006194942670845194,
+        "utc": "2092-05-03T09:11:49.131892+00:00"
+      },
+      "saturn": {
+        "arcseconds": 0.0028613040512937005,
+        "utc": "1915-05-31T14:36:19.208460+00:00"
+      }
+    },
+    "failures": [],
+    "failure_count": 0,
+    "kernel_sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+    "scope": "Seven physical grahas, apparent geocentric tropical longitudes only; nodes, lagna, dashas and interpretation excluded."
+  },
+  "release_ready": false,
+  "spec_suites": [
+    {
+      "id": 1,
+      "name": "30 golden charts against two reference programs",
+      "status": "blocked",
+      "detail": "External JHora and AstroSage exports are not supplied; zero approved golden charts."
+    },
+    {
+      "id": 2,
+      "name": "Independent astronomy on 1,000 epochs",
+      "status": "passed",
+      "detail": "Skyfield/DE440s compares seven physical grahas in the apparent tropical frame; scope is explicitly limited."
+    },
+    {
+      "id": 3,
+      "name": "Birth-time robustness",
+      "status": "partial",
+      "detail": "Angular transitions, planetary stations, DST cases and unknown time tested; dasha/strength certification remains incomplete."
+    },
+    {
+      "id": 4,
+      "name": "Fact firewall mutations",
+      "status": "partial",
+      "detail": "Closed technical templates reject injected facts and prose; the full dossier firewall is pending."
+    },
+    {
+      "id": 5,
+      "name": "Safety covenant",
+      "status": "not_implemented",
+      "detail": "No conversational model path is enabled in this milestone."
+    },
+    {
+      "id": 6,
+      "name": "Knowledge lint and approvals",
+      "status": "blocked",
+      "detail": "Source registry and draft rules exist; no approved predictive corpus."
+    },
+    {
+      "id": 7,
+      "name": "Dossier validity",
+      "status": "blocked",
+      "detail": "Requires approved corpus and completed computation dependencies."
+    },
+    {
+      "id": 8,
+      "name": "Interpretive faithfulness",
+      "status": "blocked",
+      "detail": "Requires reviewed entries, live verifier and expert checks."
+    },
+    {
+      "id": 9,
+      "name": "Cross-language consistency",
+      "status": "blocked",
+      "detail": "Technical facts are deterministic; interpretation-language suite not implemented."
+    },
+    {
+      "id": 10,
+      "name": "Covenant red team",
+      "status": "blocked",
+      "detail": "No conversational model path is enabled."
+    },
+    {
+      "id": 11,
+      "name": "Specificity",
+      "status": "not_run",
+      "detail": "Rarity of a chart fact alone does not establish that an interpretation is specific or valid."
+    },
+    {
+      "id": 12,
+      "name": "User jury",
+      "status": "requires_people",
+      "detail": "User study has not run."
+    },
+    {
+      "id": 13,
+      "name": "Latency and cost",
+      "status": "partial",
+      "detail": "Local numerical latency is measurable; model latency/cost not measured."
+    },
+    {
+      "id": 14,
+      "name": "Blind expert concordance",
+      "status": "requires_people",
+      "detail": "No expert panel or consented real-chart set yet."
+    },
+    {
+      "id": 15,
+      "name": "Independent rule extraction agreement",
+      "status": "requires_people",
+      "detail": "No independent scholar encodings or kappa estimates yet."
+    },
+    {
+      "id": 16,
+      "name": "Verifier seeded errors",
+      "status": "blocked",
+      "detail": "No live model verifier is enabled."
+    },
+    {
+      "id": 17,
+      "name": "Blind birth-time rectification",
+      "status": "not_implemented",
+      "detail": "Feature stays unavailable until its controlled evaluation passes."
+    },
+    {
+      "id": 18,
+      "name": "Optional-input incremental value",
+      "status": "not_implemented",
+      "detail": "No claim that additional inputs improve predictions."
+    },
+    {
+      "id": 19,
+      "name": "Prospective outcome calibration",
+      "status": "not_started",
+      "detail": "Requires consent, preregistration and held-out/shuffled controls; not a release gate."
+    }
+  ],
+  "source_triage": [
+    {
+      "id": "PVR-D27-EX23",
+      "status": "quarantined_pending_adjudication",
+      "source": "pvr-2000",
+      "locator": "6.2.16, example 23, printed p58",
+      "input_longitude": 71,
+      "published_sign_index": 4,
+      "formula_sign_index": 3,
+      "explanation": "The stated rule starts airy signs from Libra. 11 degrees in Gemini is division 10. Libra counted inclusively to 10 is Cancer, but the worked example says Leo. The engine follows the stated formula under a draft convention; this example is not an approved oracle.",
+      "resolution_required": "Independent classical edition/JHora comparison and reviewer adjudication. Do not silently alter or count this reference as passed."
+    },
+    {
+      "id": "PVR-MARS-MOOLATRIKONA",
+      "status": "quarantined_pending_adjudication",
+      "source": "pvr-2000",
+      "locator": "3.3, table 6 and note 3, printed p34",
+      "explanation": "Table 6 places Mars moolatrikona in Aries, while prose note 3 says the first 12 degrees of Leo. Draft implementation follows table 6 (Aries). The conflict remains explicit and requires review."
+    },
+    {
+      "id": "SPEC-HISTORICAL-INDIA",
+      "status": "limitation_documented",
+      "source": "spec-v2.1:B3",
+      "explanation": "A single modern IANA zone is not a guarantee of the actual civil-time convention on every historical Indian record. A sourced offset in seconds can override the zone; historical outputs carry a warning."
+    }
+  ]
+}

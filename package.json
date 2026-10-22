@@ -1,0 +1,7 @@
+{
+  "name": "jyoti-accuracy-lab",
+  "private": true,
+  "scripts": {
+    "dev": "node tools/dev.mjs"
+  }
+}

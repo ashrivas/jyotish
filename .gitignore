@@ -1,0 +1,16 @@
+.venv/
+.runtime/
+__pycache__/
+.pytest_cache/
+.hypothesis/
+.env*
+!.env.example
+data/ephe/*.se1
+refdata/books/
+refdata/kernels/
+refdata/private/
+refdata/imports/
+var/
+*.log
+.openai/
+node_modules/

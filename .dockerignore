@@ -1,0 +1,7 @@
+.git
+.venv
+refdata
+var
+tests
+evals
+.env*

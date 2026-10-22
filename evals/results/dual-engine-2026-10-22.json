@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "epochs": 1000,
+  "comparisons": 7000,
+  "seed": 20261022,
+  "tolerance_arcseconds": 1.0,
+  "worst_by_planet": {
+    "sun": {
+      "arcseconds": 0.00273371924777166,
+      "utc": "1915-05-31T14:36:19.208460+00:00"
+    },
+    "moon": {
+      "arcseconds": 0.007441116292739025,
+      "utc": "2084-01-05T08:44:58.009922+00:00"
+    },
+    "mars": {
+      "arcseconds": 0.02758949830194979,
+      "utc": "1912-11-05T10:50:55.030605+00:00"
+    },
+    "mercury": {
+      "arcseconds": 0.0025816441848292015,
+      "utc": "1908-08-02T12:26:51.818509+00:00"
+    },
+    "jupiter": {
+      "arcseconds": 0.0025620003270887537,
+      "utc": "1915-05-31T14:36:19.208460+00:00"
+    },
+    "venus": {
+      "arcseconds": 0.006194942670845194,
+      "utc": "2092-05-03T09:11:49.131892+00:00"
+    },
+    "saturn": {
+      "arcseconds": 0.0028613040512937005,
+      "utc": "1915-05-31T14:36:19.208460+00:00"
+    }
+  },
+  "failures": [],
+  "failure_count": 0,
+  "kernel_sha256": "c1c7feeab882263fc493a9d5a5b2ddd71b54826cdf65d8d17a76126b260a49f2",
+  "scope": "Seven physical grahas, apparent geocentric tropical longitudes only; nodes, lagna, dashas and interpretation excluded."
+}

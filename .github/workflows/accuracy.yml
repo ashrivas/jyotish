@@ -1,0 +1,21 @@
+name: Local accuracy checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  numerical:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: astral-sh/setup-uv@94527f2e458b27549849d47d273a16bec83a01e9 # v7
+        with:
+          enable-cache: true
+      - run: uv sync --dev --locked
+      - run: uv run python tools/fetch_data.py --oracle
+      - run: uv run python tools/run_evals.py
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        if: always()
+        with:
+          name: synthetic-evaluation-report
+          path: var/evals/latest.json
+          if-no-files-found: warn
